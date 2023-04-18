@@ -1,7 +1,7 @@
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust.
-1. 16.05.2022 kell 16:15-17:45 zoomis
+1. 16.05.2023 kell 16:15-17:45 zoomis
 
 
 
