@@ -21,6 +21,10 @@ function displayWeather() {
       iconElement.innerHTML = `<img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
       humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
       windElement.textContent = `Wind: ${data.wind.speed} m/s`;
+
+      const backgroundElement = document.querySelector('.background');
+      backgroundElement.style.backgroundImage = `url('images/${getBackgroundImage(data.weather[0].id)}')`;
+
     })
     .catch(error => {
       console.error('Error:', error);
@@ -43,3 +47,22 @@ displayWeather();
 
 const searchForm = document.querySelector('.search-form');
 searchForm.addEventListener('submit', handleSearch);
+
+function getBackgroundImage(weatherCode) {
+  if (weatherCode >= 200 && weatherCode < 300) {
+    return 'thunderstorm.jpg';
+  } else if (weatherCode >= 300 && weatherCode < 600) {
+    return 'rainy.jpg';
+  } else if (weatherCode >= 600 && weatherCode < 700) {
+    return 'snowy.jpg';
+  } else if (weatherCode >= 700 && weatherCode < 800) {
+    return 'foggy.jpg';
+  } else if (weatherCode == 800) {
+    return 'sunny.jpg';
+  } else if (weatherCode > 800 && weatherCode < 900) {
+    return 'cloudy.jpg';
+  } else {
+    return 'default.jpg';
+  }
+}
+
