@@ -1,0 +1,60 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.weather-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.location {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.temperature {
+  font-size: 4em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.description {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.icon {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+.humidity, .wind {
+  margin-top: 1em;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .temperature {
+    font-size: 2.5em;
+  }
+
+  .icon {
+    font-size: 2em;
+  }
+}
