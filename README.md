@@ -1,40 +1,16 @@
-# iseseisev-projekt
-
-Tähtaeg - 1 päev enne esitlust.
-1. 16.05.2023 kell 16:15-17:45 zoomis
-
-
-
-Eesrakenduste arendamise iseseisva projekti lähteülesanne. 
-
-Töö võib teha teha 1-4 liikmelise meeskonnana. Punkte jaotatakse vastavalt sellele, mitu liiget on meeskonnas:
-* 1 liige - max 70 punkti/inimene.
-* 2 liiget - max 40 punkti/inimene.
-* 3 liiget - max 30 punkti/inimene.
-* 4 liiget - max 20 punkti/inimene.
-
-**NB! Kui meeskonnas on rohkem kui üks liige, siis peab githubis selgelt välja tulema, kes millist osa tegi, et oleks võimalik hinnata iga meeskonnaliikme individuaalset panust.**
-
-README.md fail sisaldab:
-1. suurelt rakenduse nime;
-1. autorite nimesid;
-1. rakenduse funktsionaalsuse kirjeldust;
-1. ekraanitõmmist rakendusest.
-
-Rakenduse puhul peavad olema täidetud vähemalt järgmised nõuded:
-  * rakendus lahendab tõsist probleemi või on meelelahutusliku eesmärgiga; 
-  * rakenduse idee peab olema kooskõlastatud õppejõuga;
-  * responsive disain (kui tegemist pole ainult desktopile mõeldud mänguga);
-  * rakenduse javascripti osa on vähemalt 200 rida koodi ja koodi kordused peavad olema minimeeritud;
-  
-Teema ettepanekud:
- * Kuldvillak
- * Filmiinfo rakendus kasutades moviedatabase api-t - saab otsida filme, seriaale ja teha list enda vaadatud filmidest jne. 
- * Raamaturiiuli rakendus - Saab sisestada kodus olevad raamatud, märkida millised on loetud ja millised on pooleli. Moodustada lugemiseks eraldi liste ning märkida, mis leheküljel on raamat hetkel pooleli.
- * 
-
-Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Üle 50% koodist (javascript ja CSS) peab olema enda kirjutatud. Kasutada võib erinevaid API-sid ja võib kasutada erinevaid javascripti teeke (library).
-
-# Esitlus
-* Igale grupile on aega 12 minutit (5 minutit rakenduse esitlus, 5 minutit koodi esitlus, 2 minutit küsimused)
-* Esitama peavad grupiliikmed ühisel ajal.
+Rakenduse nimi: "My Series"
+Autor: Kristel Kolkanen
+Rakenduse funktsionaalsuse kirjeldus:
+Avaleht
+- näitab IMDB lehelt kõige kõrgemalt hinnatud 250 seriaali nime ja postrit
+- iga seriaali all on kaks nuppu "Watched" ja "Add to watchlist", mille abil saab seriaale lisada kas vaadatud seriaalide lehele või watchlisti lehele, salvestades need localstorage sisse
+Watched
+- näitab kõiki seriaale, mis on avalehelt "watched" seriaalide alla valitud
+- iga seriaali all on nupud "Rank" ja "Remove", mille abil on võimalik seriaali 1-5ni hinnata ja vaadatud seriaalide hulgast eemaldada.
+(Ranking süsteemi ei saanud lõpuni tööle. Antud hinnangud salvestuvad küll localstorage sisse, kuid ei jää lehel nähtavaks. Samuti oli idee kuvada seriaale sorteeritult ehk kõrgema hinnanguga seriaalid ees ja madalamaga taga)
+"Watchlist"
+- näitab kõiki seriaale, mis on avalehelt "add to watchlist" seriaalide alla valitud
+- iga seriaali all on nupp "add to watched", mis eemaldab seriaali watchlistist ja lisab vaadatud seriaalide listi
+![Screen 1](screen1.png)
+![Screen 2](screen2.png)
+![Screen 3](screen3.png)
