@@ -1,20 +1,28 @@
-// Tagatausta liikumiskiirus
-let move_speed = 6;
+// Tagatausta liikumiskiirus (koos kirjutatud)
+let move_speed = 8;
 	
-// gravitatsioon
+// gravitatsioon 
 let gravity = 0.5;
 	
 // lennuelement
 let plane = document.querySelector('.plane');
+	
+// Lennukielemendi omaduste saamine 
 let plane_props = plane.getBoundingClientRect();
 let background = document.querySelector('.background').getBoundingClientRect();
 	
+// score-ile viide (Vanessa)
+let score_val = document.querySelector('.score_val');
+let message = document.querySelector('.message');
+let score_title = document.querySelector('.score_title');
 	
-// klikkide kuulaja
+// Mängu panek algusesse 
 let game_state = 'Start';
+	
+// Klikkide kuulaja
 document.addEventListener('keydown', (e) => {
 	
-// Mäng algab kui klikitakse 
+// Mäng algab kui klikitakse (Vanessa)
 if (e.key == ' ' &&
 	game_state != 'Play') {
 	document.querySelectorAll('.pipe_sprite')
@@ -25,29 +33,29 @@ if (e.key == ' ' &&
 	game_state = 'Play';
 	message.innerHTML = '';
 	score_title.innerHTML = 'Score : ';
-    score_val.innerHTML = '0';
-    highscore_title.innerHTML = 'Highscore : ';
+	score_val.innerHTML = '0';
 	play();
 }
 });
-function play() {
+// (Karl, terve function)
+function play() { 
     function move() {
         
-        // Jälgida kas mäng on lõppenud
+        // panna tähele kui mäng on lõppenud
         if (game_state != 'Play') return;
         
-        // Getting reference to all the pipe elements
-        let pipe = document.querySelectorAll('.pipe_sprite');
-        pipe.forEach((element) => {
+        // Pipe elementide reference
+        let pipe_sprite = document.querySelectorAll('.pipe_sprite');
+        pipe_sprite.forEach((element) => {
             
         let pipe_sprite_props = element.getBoundingClientRect();
         plane_props = plane.getBoundingClientRect();
             
-        // Kadunud lennuelemendid kustutatakse
+        // Väljaliikunud pipesid kustutatakse
         if (pipe_sprite_props.right <= 0) {
             element.remove();
         } else {
-            // Collision detection with plane and pipes
+            // kokkupõrke detector
             if (
             plane_props.left < pipe_sprite_props.left +
             pipe_sprite_props.width &&
@@ -59,15 +67,13 @@ function play() {
             plane_props.height > pipe_sprite_props.top
             ) {
                 
-            // Change game state and end the game
-            // if collision occurs
+            // Muuta mäng uuesti alustusvalmis staadiumisse
             game_state = 'End';
             message.innerHTML = 'Press Space To Restart';
             message.style.left = '28vw';
             return;
             } else {
-            // Increase the score if player
-            // has the successfully dodged the
+            // Skoori suurendatakse kui on pipesidest möödutud
 
             if (
                 pipe_sprite_props.right < plane_props.left &&
@@ -76,9 +82,6 @@ function play() {
                 element.increase_score == '1'
             ) {
                 score_val.innerHTML = +score_val.innerHTML + 1;
-                if (score_val.innerHTML > highscore_val.innerHTML) {
-                    highscore_val.innerHTML = +highscore_val.innerHTML + 1;
-                }
             }
             element.style.left =
                 pipe_sprite_props.left - move_speed + 'px';
@@ -90,6 +93,7 @@ function play() {
     }
     requestAnimationFrame(move);
 
+    // Kokkupõrke detector (Vanessa)
     let plane_dy = 0;
     function apply_gravity() {
         if (game_state != 'Play') return;
@@ -99,38 +103,48 @@ function play() {
             plane_dy = -7.6;
         }
         });
+        if (plane_props.top <= 0 ||
+            plane_props.bottom >= background.bottom) {
+        game_state = 'End';
+        message.innerHTML = 'Press Space To Restart';
+        message.style.left = '28vw';
+        return;
+        }
+        plane.style.top = plane_props.top + plane_dy + 'px';
+        plane_props = plane.getBoundingClientRect();
+        requestAnimationFrame(apply_gravity);
     }
     requestAnimationFrame(apply_gravity);
 
     let pipe_seperation = 0;
         
-    // Pipeside vahe
+    // konstantne väärtus kahe pipesi vahel (Karl)
     let pipe_gap = 35;
     function create_pipe() {
         if (game_state != 'Play') return;
         
-        // uute pipeside loomine
     
         if (pipe_seperation > 115) {
         pipe_seperation = 0
             
-        // random mathiga vahe leidmine 
-        // kasutatud https://stackoverflow.com/questions/1202687/how-do-i-get-a-specific-range-of-numbers-from-rand
-        //abi, kuid kood on kohandatud
-        let pipe_posi = Math.floor(Math.random() *28 ) + 8;
+        let pipe_posi = Math.floor(Math.random() * 43) + 8;
         let pipe_sprite_inv = document.createElement('div');
         pipe_sprite_inv.className = 'pipe_sprite';
-        pipe_sprite_inv.style.top = pipe_posi - 70 + 'px';
-        pipe_sprite_inv.style.left = '80 px';
-            
-        // Append the created pipe element in DOM
+        pipe_sprite_inv.style.top = pipe_posi - 70 + 'vh';
+        pipe_sprite_inv.style.left = '100vw';
+         
         document.body.appendChild(pipe_sprite_inv);
-        let pipe = document.createElement('div');
-        pipe.className = 'pipe_sprite';
-        pipe.style.top = pipe_posi + pipe_gap + 'px';
-        pipe.style.left = '80vw';
-        pipe.increase_score = '1';
+        let pipe_sprite = document.createElement('div');
+        pipe_sprite.className = 'pipe_sprite';
+        pipe_sprite.style.top = pipe_posi + pipe_gap + 'vh';
+        pipe_sprite.style.left = '100vw';
+        pipe_sprite.increase_score = '1';
             
+        // (Karl)
+        document.body.appendChild(pipe_sprite);
+        }
+        pipe_seperation++;
+        requestAnimationFrame(create_pipe);
     }
     requestAnimationFrame(create_pipe);
 }
