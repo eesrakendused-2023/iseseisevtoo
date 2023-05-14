@@ -2,6 +2,8 @@
 
 Autor: Merilyn Hunt (Litvinov)
 
+http://www.tlu.ee/~merilynl/platformer/game.html
+
 Tile-based platformer mäng on loodud Phaser framework'i abil. Mäng koosneb avamenüü vaatest, ühest tasemest ja kahest lõpuekraanist. Mängu karakterit saab juhtida noolte ning tühiku abil. Mängu eesmärgiks on platvormidele hüpates koguda münte ning jõuda taseme lõppu võimalikult kiiresti. Punktisumma moodustab ajaline skoor ja müntide skoor, iga münt annab summale juurde 500 punkti. Võidu korral kuvatakse lõpuekraanil praegune skoor ning kohalikku mällu salvestatud kõrgeim skoor. Mänguala on altpoolt piiratud veega, millesse kukkumine toob kaasa mängu kaotamise. Mängu lõppu märgistab must ala, milleni jõudes kuvatakse võiduekraan. Mängu kaart, platvormide ning müntide paigutus loodi Tiled programmiga, mis lasi kaardistada ala kihtidena ning hiljem igalt kihilt eraldi andmeid lugeda. Taustal mängib muusika ning münte kogudes ja vette kukkudes esitatakse heliefekte.
 
 Link Phaseri Githubi lehele:
