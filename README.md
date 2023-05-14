@@ -1,40 +1,25 @@
-# iseseisev-projekt
+**Tile-based platformer**
 
-Tähtaeg - 1 päev enne esitlust.
-1. 16.05.2023 kell 16:15-17:45 zoomis
+Autor: Merilyn Hunt (Litvinov)
 
+Tile-based platformer mäng on loodud Phaser framework'i abil. Mäng koosneb avamenüü vaatest, ühest tasemest ja kahest lõpuekraanist. Mängu karakterit saab juhtida noolte ning tühiku abil. Mängu eesmärgiks on platvormidele hüpates koguda münte ning jõuda taseme lõppu võimalikult kiiresti. Punktisumma moodustab ajaline skoor ja müntide skoor, iga münt annab summale juurde 500 punkti. Võidu korral kuvatakse lõpuekraanil praegune skoor ning kohalikku mällu salvestatud kõrgeim skoor. Mänguala on altpoolt piiratud veega, millesse kukkumine toob kaasa mängu kaotamise. Mängu lõppu märgistab must ala, milleni jõudes kuvatakse võiduekraan. Mängu kaart, platvormide ning müntide paigutus loodi Tiled programmiga, mis lasi kaardistada ala kihtidena ning hiljem igalt kihilt eraldi andmeid lugeda. Taustal mängib muusika ning münte kogudes ja vette kukkudes esitatakse heliefekte.
 
+Link Phaseri Githubi lehele:
+https://github.com/photonstorm/phaser
 
-Eesrakenduste arendamise iseseisva projekti lähteülesanne. 
+Link Tiled veebilehele:
+https://www.mapeditor.org/
 
-Töö võib teha teha 1-4 liikmelise meeskonnana. Punkte jaotatakse vastavalt sellele, mitu liiget on meeskonnas:
-* 1 liige - max 70 punkti/inimene.
-* 2 liiget - max 40 punkti/inimene.
-* 3 liiget - max 30 punkti/inimene.
-* 4 liiget - max 20 punkti/inimene.
+Link kasutatud visuaalsetele elementidele:
+https://v3x3d.itch.io/retro-lines
 
-**NB! Kui meeskonnas on rohkem kui üks liige, siis peab githubis selgelt välja tulema, kes millist osa tegi, et oleks võimalik hinnata iga meeskonnaliikme individuaalset panust.**
+Lingid koodi kirjutamiseks kasutatud materjalidele:
+https://github.com/StackAbuse/creating-a-platformer-with-phaser-3/tree/master
+https://medium.com/@alizah.lalani/collecting-objects-in-phaser-3-platformer-games-using-tiled-4e9298cbfc85
 
-README.md fail sisaldab:
-1. suurelt rakenduse nime;
-1. autorite nimesid;
-1. rakenduse funktsionaalsuse kirjeldust;
-1. ekraanitõmmist rakendusest.
+Ekraanitõmmised mängust:
 
-Rakenduse puhul peavad olema täidetud vähemalt järgmised nõuded:
-  * rakendus lahendab tõsist probleemi või on meelelahutusliku eesmärgiga; 
-  * rakenduse idee peab olema kooskõlastatud õppejõuga;
-  * responsive disain (kui tegemist pole ainult desktopile mõeldud mänguga);
-  * rakenduse javascripti osa on vähemalt 200 rida koodi ja koodi kordused peavad olema minimeeritud;
-  
-Teema ettepanekud:
- * Kuldvillak
- * Filmiinfo rakendus kasutades moviedatabase api-t - saab otsida filme, seriaale ja teha list enda vaadatud filmidest jne. 
- * Raamaturiiuli rakendus - Saab sisestada kodus olevad raamatud, märkida millised on loetud ja millised on pooleli. Moodustada lugemiseks eraldi liste ning märkida, mis leheküljel on raamat hetkel pooleli.
- * 
-
-Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Üle 50% koodist (javascript ja CSS) peab olema enda kirjutatud. Kasutada võib erinevaid API-sid ja võib kasutada erinevaid javascripti teeke (library).
-
-# Esitlus
-* Igale grupile on aega 12 minutit (5 minutit rakenduse esitlus, 5 minutit koodi esitlus, 2 minutit küsimused)
-* Esitama peavad grupiliikmed ühisel ajal.
+![game screenshot 1](https://github.com/merilynl/iseseisevtoo/assets/114921922/2ae4a381-e54d-45c5-9a4d-95ea7a62fa6a)
+![game screenshot 2](https://github.com/merilynl/iseseisevtoo/assets/114921922/36e81e9d-019e-4507-9e58-be658afa07f2)
+![game screenshot 3](https://github.com/merilynl/iseseisevtoo/assets/114921922/a0aebd7a-ed98-4075-b1e2-59133817e17d)
+![game screenshot 4](https://github.com/merilynl/iseseisevtoo/assets/114921922/ebbb397a-e636-4274-be65-8589e27b58f0)
