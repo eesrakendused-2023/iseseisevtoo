@@ -9,6 +9,22 @@ const windElement = document.querySelector('.wind');
 const apiKey = 'ea365d5b2565fbeaec5687d147e67ac7';
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New%20York&appid=${apiKey}&units=metric`;
 
+const unitToggle = document.getElementById('unit-toggle');
+let unit = 'metric'; // default unit is Celsius
+
+unitToggle.addEventListener('change', function() {
+  if (unitToggle.checked) {
+    unit = 'imperial';
+    temperatureElement.textContent = `${Math.round(data.main.temp)}°F`;
+  } else {
+    unit = 'metric';
+    temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
+  }
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
+  displayWeather();
+  
+});
+
 function displayWeather() {
   fetch(apiUrl)
     .then(response => response.json())
@@ -16,7 +32,11 @@ function displayWeather() {
       console.log(data);
 
       locationElement.textContent = `${data.name}, ${data.sys.country}`;
-      temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
+      if (unit === 'metric') {
+        temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
+      } else {
+        temperatureElement.textContent = `${Math.round(data.main.temp)}°F`;
+      }
       descriptionElement.textContent = data.weather[0].description;
       iconElement.innerHTML = `<img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">`;
       humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
@@ -25,6 +45,7 @@ function displayWeather() {
       const backgroundElement = document.querySelector('.background');
       backgroundElement.style.backgroundImage = `url('images/${getBackgroundImage(data.weather[0].id)}')`;
 
+      //displayForecast(); // call displayForecast to show 5-day forecast
     })
     .catch(error => {
       console.error('Error:', error);
@@ -34,16 +55,22 @@ function displayWeather() {
 function handleSearch(event) {
   event.preventDefault();
   const searchInput = document.querySelector('.search-input');
-  const searchTerm = searchInput.value.trim();
+  searchTerm = searchInput.value.trim(); // update searchTerm
   if (!searchTerm) {
     return alert('Please enter a city name');
   }
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=metric`;
+
+  displayForecast(); // call displayForecast to show 5-day forecast
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
   displayWeather();
+
   searchInput.value = '';
 }
 
-displayWeather();
+displayWeather(); // call displayWeather to show default weather and forecast
+
+
 
 const searchForm = document.querySelector('.search-form');
 searchForm.addEventListener('submit', handleSearch);
@@ -66,3 +93,36 @@ function getBackgroundImage(weatherCode) {
   }
 }
 
+function displayForecast() {
+  const forecastElement = document.querySelector('.forecast');
+  forecastElement.innerHTML = '';
+
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${apiKey}&units=${unit}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+      const forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
+      forecastData.forEach(item => {
+        const date = new Date(item.dt_txt);
+        const day = date.toLocaleString('default', { weekday: 'short' });
+        let temperature = `${Math.round(item.main.temp)}°C`;
+        if (unit === 'imperial') {
+          temperature = `${Math.round(item.main.temp)}°F`;
+        }
+        const iconUrl = `http://openweathermap.org/img/w/${item.weather[0].icon}.png`;
+
+        const forecastItem = document.createElement('div');
+        forecastItem.classList.add('forecast-item');
+        forecastItem.innerHTML = `
+          <div class="forecast-day">${day}</div>
+          <div class="forecast-icon"><img src="${iconUrl}" alt="${item.weather[0].description}"></div>
+          <div class="forecast-temperature">${temperature}</div>
+        `;
+        forecastElement.appendChild(forecastItem);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}

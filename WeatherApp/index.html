@@ -10,6 +10,15 @@
     <div class="background"></div>
     <h1 class="title">Weather App</h1>
     
+  <div class="toggle">
+        <span>Celsius</span>
+        <label class="switch">
+          <input type="checkbox" id="unit-toggle" />
+          <span class="slider round"></span>
+        </label>
+        <span>Fahrenheit</span>
+      </div>
+
     <div class="weather-data">
       <div class="location"></div>
       <div class="temperature"></div>
@@ -23,6 +32,11 @@
       <button type="submit" class="search-button">Search</button>
     </form>
   </div>
+
+  
+    <h2 class="forecast-title">5-Day Forecast</h2>
+    <section class="forecast"></section>
+  
 
   <script src="app.js"></script>
 </body>
