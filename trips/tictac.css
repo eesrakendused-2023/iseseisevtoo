@@ -1,0 +1,66 @@
+	body {
+		background-image: url("https://cdn.wallpapersafari.com/24/2/PlyaIY.jpg");
+	}
+	
+	h1 {
+		font-family: Copperplate, Papyrus, fantasy;
+		color: rgb(255, 255, 255);
+		font-size: 45px;
+		text-shadow:1px 1px 10px #c5a60c, 1px 1px 10px #ccc;
+		
+	}
+
+	#kast1, #kast2, #kast3, #kast4, #kast5,
+	#kast6, #kast7, #kast8, #kast9 {
+		width: 80px;
+		height: 52px;
+		margin: auto;
+		border: 1px solid rgb(255, 255, 255);
+		border-radius: 6px;
+		font-size: 30px;
+		text-align: center;
+	}
+
+	#algus {
+		box-sizing: border-box;
+		width: 105px;
+		height: 60px;
+		border: 2px solid rgb(133, 184, 32);
+		margin: auto;
+		border-radius: 4px;
+		font-family: Copperplate, Papyrus, fantasy;
+		background-color: lavenderblush;
+		color: rgb(100, 199, 47);
+		font-size: 15px;
+		cursor: pointer;
+	}
+
+	#print {
+		font-family: Copperplate, Papyrus, fantasy;
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		text-shadow:1px 1px 10px #c5a60c, 1px 1px 10px #ccc;
+	}
+
+	#main {
+		text-align: center;
+		
+	}
+
+	#juhis {
+		font-family: Copperplate, Papyrus, fantasy;
+			
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		text-shadow:1px 1px 10px #c5a60c, 1px 1px 10px #ccc;
+	}
+
+	#viide {
+		font-family: Copperplate, Papyrus, fantasy;
+		text-align: left;	
+		color: rgb(141, 8, 243);
+		font-size: 20px;
+		text-shadow:1px 1px 10px #ffffff, 1px 1px 10px #ccc;
+	}
+
+	
