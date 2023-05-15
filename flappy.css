@@ -3,7 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-/* Vanessa */
+
 body {
 	height: 100vh;
 	width: 100vw;
@@ -14,7 +14,7 @@ body {
 	width: 100vw;
 	background-color: skyblue;
 }
-
+/* Vanessa */
 .plane {
 	height: 100px;
 	width: 160px;
@@ -30,9 +30,10 @@ body {
 	left: 100vw;
 	height: 70vh;
 	width: 6vw;
-	background-color: whitesmoke;
+	/*background-color: whitesmoke;*/
+	background-image: url('pipe1.png');
 }
-/* Karl  */
+/* Karl */
 .message {
 	position: fixed;
 	z-index: 10;
@@ -44,11 +45,12 @@ body {
 	left: 20vw;
 	text-align: center;
 }
+
 .score {
 	position: fixed;
 	z-index: 10;
 	height: 10vh;
-	font-size: 10vh;
+	font-size: 5vh;
 	font-weight: 100;
 	color: whitesmoke;
 	top: 0;
@@ -56,5 +58,9 @@ body {
 }
 
 .score_val {
+	color: navy;
+}
+
+.highscore_val {
 	color: navy;
 }
