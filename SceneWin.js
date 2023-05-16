@@ -19,12 +19,14 @@ export default class SceneWin extends Phaser.Scene {
         const winText = this.add.text(430, 100, "YOU WIN!", { fontFamily: 'monospace', fontSize: '50px' });
 
         //show score
-        if(localStorage.highScore == localStorage.currentScore || localStorage.highScore < localStorage.currentScore) {
-          const scoreNewText = this.add.text(430, 160, ("New high score: " + localStorage.highScore), { fontFamily: 'monospace', fontSize: '30px' });
-        } else {
-          const scoreCurrentText = this.add.text(430, 160, ("Score: " + localStorage.currentScore), { fontFamily: 'monospace', fontSize: '30px' });
-          const highScoreText = this.add.text(430, 190, ("High score: " + localStorage.highScore), { fontFamily: 'monospace', fontSize: '30px' });
-        }
+        if(window.localStorage.getItem('highScore') == window.localStorage.getItem('currentScore') || window.localStorage.getItem('highScore') < window.localStorage.getItem('currentScore')) {
+          const scoreNewText = this.add.text(430, 160, ("New high score: " + window.localStorage.getItem('highScore')), { fontFamily: 'monospace', fontSize: '30px' });
+        } else /* (window.localStorage.getItem('highScore') > window.localStorage.getItem('currentScore')) */{
+          const scoreCurrentText = this.add.text(430, 160, ("Score: " + window.localStorage.getItem('currentScore')), { fontFamily: 'monospace', fontSize: '30px' });
+          const highScoreText = this.add.text(430, 190, ("High score: " + window.localStorage.getItem('highScore')), { fontFamily: 'monospace', fontSize: '30px' });
+        } /* else {
+          window.localStorage.setItem('highScore', window.localStorage.getItem('currentScore'));
+        } */
         
 
 
