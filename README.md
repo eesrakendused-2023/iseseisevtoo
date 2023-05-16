@@ -1,40 +1,40 @@
-# iseseisev-projekt
+# Kalkulaatorid laenude ja maksude jaoks
 
-Tähtaeg - 1 päev enne esitlust.
-1. 16.05.2023 kell 16:15-17:45 zoomis
+Kalkulaator näiteks autoliisingu, kodu- või õppelaenu arvutamiseks.
+
+Kalkulaator automaksu arvutamiseks.
 
 
+## Authors
 
-Eesrakenduste arendamise iseseisva projekti lähteülesanne. 
+- [Aksel Talvoja](https://www.github.com/ajupesu)
 
-Töö võib teha teha 1-4 liikmelise meeskonnana. Punkte jaotatakse vastavalt sellele, mitu liiget on meeskonnas:
-* 1 liige - max 70 punkti/inimene.
-* 2 liiget - max 40 punkti/inimene.
-* 3 liiget - max 30 punkti/inimene.
-* 4 liiget - max 20 punkti/inimene.
+## Funktsionaalsuse kirjeldus
 
-**NB! Kui meeskonnas on rohkem kui üks liige, siis peab githubis selgelt välja tulema, kes millist osa tegi, et oleks võimalik hinnata iga meeskonnaliikme individuaalset panust.**
+- Laenu kalkulaator
 
-README.md fail sisaldab:
-1. suurelt rakenduse nime;
-1. autorite nimesid;
-1. rakenduse funktsionaalsuse kirjeldust;
-1. ekraanitõmmist rakendusest.
+Valem laenu arvutamiseks on P x R x (1+R)^N / [(1+R)^N-1] – kus, “P” on laenatud raha kogus, “N” laenuperiood kuudes, ja “R” on intressimäär.
 
-Rakenduse puhul peavad olema täidetud vähemalt järgmised nõuded:
-  * rakendus lahendab tõsist probleemi või on meelelahutusliku eesmärgiga; 
-  * rakenduse idee peab olema kooskõlastatud õppejõuga;
-  * responsive disain (kui tegemist pole ainult desktopile mõeldud mänguga);
-  * rakenduse javascripti osa on vähemalt 200 rida koodi ja koodi kordused peavad olema minimeeritud;
-  
-Teema ettepanekud:
- * Kuldvillak
- * Filmiinfo rakendus kasutades moviedatabase api-t - saab otsida filme, seriaale ja teha list enda vaadatud filmidest jne. 
- * Raamaturiiuli rakendus - Saab sisestada kodus olevad raamatud, märkida millised on loetud ja millised on pooleli. Moodustada lugemiseks eraldi liste ning märkida, mis leheküljel on raamat hetkel pooleli.
- * 
+Kalkulaatorisse saab sisestada laenu koguse, intressimäära ja laenuperioodi kuudes. Seejärel arvutatakse välja kuumakse, intressi summa ja palju on kokku vaja tagasi maksta. Intressi summa ja laenatud summa tekib ekraanile ka sektordiagrammina.
 
-Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Üle 50% koodist (javascript ja CSS) peab olema enda kirjutatud. Kasutada võib erinevaid API-sid ja võib kasutada erinevaid javascripti teeke (library).
 
-# Esitlus
-* Igale grupile on aega 12 minutit (5 minutit rakenduse esitlus, 5 minutit koodi esitlus, 2 minutit küsimused)
-* Esitama peavad grupiliikmed ühisel ajal.
+- Automaksu kalkulaator
+
+See kalkulaator põhineb Arenguseire keskuse poolt väljapakutud võimalikul valemil, kuidas automaksu võiks koguda. See on üles ehitatud CO2 komponendile, nii nagu plaanib teha ka valitsus. 
+
+Sisestada saab auto CO2 näitaja, väljastatakse arvestuslik automaks vastavalt kütusele koos sektordiagrammiga.
+
+## Kasutatud värvid
+
+| Hex             |
+| ----------------- |
+ ![#CAD2C5](https://via.placeholder.com/10/CAD2C5?text=+) #CAD2C5 |
+ ![#84A98C](https://via.placeholder.com/10/84A98C?text=+) #84A98C |
+ ![#52796F](https://via.placeholder.com/10/52796F?text=+) #52796F |
+ ![#354F52](https://via.placeholder.com/10/354F52?text=+) #354F52 |
+ ![#2F3E46](https://via.placeholder.com/10/2F3E46?text=+) #2F3E46 |
+
+## Ekraanitõmmis
+
+![ekraanitõmmis laenu kalkulaatorist](https://snipboard.io/6Ne5fa.jpg)
+![ekraanitõmmis automaksu kalkulaatorist](https://snipboard.io/paHLb1.jpg)

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulaator</title>
+    <link rel="stylesheet" href="laen_style.css">
+    <link rel="stylesheet" href="automaks_style.css">
+</head>
+<body>
+
+    <div class="laenu-kalkulaator">
+        <div class="top">
+            <h2>Laenu Kalkulaator</h2>
+            <form action="#">
+                <div class="group">
+                    <div class="title">Laenu kogus</div>
+                    <input type="text" value="30000" class="laenu-kogus" />
+                </div>
+
+                <div class="group">
+                    <div class="title">Intressimäär</div>
+                    <input type="text" value="8.5" class="intressimäär" />
+                </div>
+
+                <div class="group">
+                    <div class="title">Periood (Kuudes)</div>
+                    <input type="text" value="240" class="periood" />
+                </div>
+
+            </form>
+        </div>
+
+
+        <div class="tulemus">
+            <div class="vasak">
+                <div class="kuumakse">
+                    <h3>Kuumakse</h3>
+                    <div class="value">123</div>
+                </div>
+
+                <div class="kogu-intress">
+                    <h3>Kogu intress</h3>
+                    <div class="value">123</div>
+                </div>
+
+                <div class="kogu-makse">
+                    <h3>Kokku vaja maksta</h3>
+                    <div class="value">123</div>
+                </div>
+
+                <button class="arvuta-nupp">Arvuta</button>
+            </div>
+
+            <div class="parem">
+                <canvas id="myChart" width="350" height="350"></canvas>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <div class="automaks-kalkulaator">
+        <div class="top2">
+            <h2>Automaksu Kalkulaator</h2>
+            <form action="#">
+                <div class="group">
+                    <div class="title">CO2 näitaja</div>
+                    <input type="text" value="185" class="co2-näitaja" />
+                </div>
+            </form>
+        </div>
+
+
+        <div class="automaks-tulemus">
+            <div class="vasak2">
+                <div class="automaks-bensiin">
+                    <h3>Arvestuslik automaks (bensiin)</h3>
+                    <div class="value">123</div>
+                </div>
+                <div class="automaks-diisel">
+                    <h3>Arvestuslik automaks (diisel)</h3>
+                    <div class="value">123</div>
+                </div>
+
+                <button class="automaks-arvuta-nupp">Arvuta</button>
+            </div>
+
+            <div class="parem">
+                <canvas id="myChart2" width="350" height="350"></canvas>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+    <script src="main.js"></script>
+    <script src="automaks.js"></script>
+    
+</body>
+</html>
