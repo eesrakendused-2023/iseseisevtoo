@@ -118,6 +118,10 @@ export default class SceneMain extends Phaser.Scene {
         fill: '#ffffff'
       });
 
+      if(window.localStorage.getItem('highScore') == null){
+        window.localStorage.setItem('highScore', 0);
+      }
+
 
     }
 
@@ -161,7 +165,7 @@ export default class SceneMain extends Phaser.Scene {
       }
       // Falling out of map/drowning
       if(this.player.y == 472){
-          localStorage.currentScore = this.score;
+        window.localStorage.setItem('currentScore', this.score);
           this.ded.play();
           this.music.stop();
           //this.ded.stop();
@@ -170,17 +174,21 @@ export default class SceneMain extends Phaser.Scene {
       // Reaching the end coordinates
       if(this.player.y == 424 && this.player.x > 919 && this.player.x < 937){
           //high score tracking
-          let highestScore = localStorage.highScore;
-          if(highestScore < this.score){
-            localStorage.highScore = this.score;
+          let highestScore = window.localStorage.getItem('highScore');
+          console.log(highestScore);
+          if(highestScore == void(0) || highestScore < this.score){
+            console.log('test');
+            window.localStorage.setItem('highScore', this.score);
           }
           //current score tracking
-          localStorage.currentScore = this.score;
+          window.localStorage.setItem('currentScore', this.score);
           this.music.stop();
           this.win.play();
           this.scene.start("SceneWin");
       }
     }
 }
+  
+  
   
   
