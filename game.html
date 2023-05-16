@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>The Couch Exile/Futile Exile</title>
+</head>
+
+<body onload="chooseNextMonster()" class="bg-cover bg-no-repeat bg-center " style="background-image: url('images/Bg/act2.jpg'); ">
+
+  <h1 class="text-center">Futile Exile</h1>
+
+<div id="contentDiv" class="border-red-600 border-2 p-3 flex flex-row items-center space-x-2">
+  
+  <!-- Stats box -->
+  <div id="Stats" class="border-sky-300 border-2 p-3 flex flex-col items-center  space-x-2 text-white">
+    <div id="StatsDMG" ></div>
+    <div id="StatsArmour" ></div>
+    <div id="StatsHealth" ></div>
+    <br>
+    <div id="chaosCount"></div>
+  </div>
+
+  <!-- Upgrades box -->
+  <div id="Upgrades" class="p-4 border-emerald-500 border-2 h-screen w-4/12 space-y-4 flex flex-col items-start">
+    <!-- Sword Upgrade Button -->
+    <div class="flex flex-row items-center space-x-4">
+      <input type="button" value="Upgrade Sword" id="ExileWeaponUpgrade" style="visibility:visible" 
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-40" 
+        onclick="ExileWeaponUpgrade();">
+      </input>
+      <img id="WeaponUpgrade" src="../projekt/images/Borders/Border156.png" class="w-12 h-12">
+    </div>
+  
+    <!-- Offhand Upgrade Button -->
+    <div class="flex flex-row items-center space-x-4">
+      <input type="button" value="Upgrade Offhand" id="ExileOffhandUpgrade" style="visibility:visible"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-40" 
+        onclick="ExileOffhandUpgrade();">
+      </input>
+      <img id="OffhandUpgrade" src="../projekt/images/Borders/Border156.png" class="w-12 h-12">
+    </div>
+
+    <!-- Helmet Upgrade Button -->
+    <div class="flex flex-row items-center space-x-4">
+      <input type="button" value="Upgrade Helmet" id="ExileHelmetUpgrade" style="visibility:visible"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-40" 
+        onclick="ExileHelmetUpgrade();">
+      </input>
+      <img id="HelmetUpgrade" src="../projekt/images/Borders/Border156.png" class="w-12 h-12">
+    </div>
+
+    <!-- Gloves Upgrade Button -->
+    <div class="flex flex-row items-center space-x-4">
+      <input type="button" value="Upgrade Gloves" id="ExileGlovesUpgrade" style="visibility:visible"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-40" 
+        onclick="ExileGlovesUpgrade();">
+      </input>
+      <img id="GlovesUpgrade" src="../projekt/images/Borders/Border156.png" class="w-12 h-12">
+    </div>
+
+    <!-- Ring Upgrade Button -->
+    <div class="flex flex-row items-center space-x-4">
+      <input type="button" value="Upgrade Ring" id="ExileRingUpgrade" style="visibility:visible"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-40" 
+        onclick="ExileRingUpgrade();">
+      </input>
+      <img id="RingUpgrade" src="../projekt/images/Borders/Border156.png" class="w-12 h-12">
+    </div>
+
+  </div>
+  
+
+  
+  
+  <!-- Monster box -->
+  <div id="MonsterInfo" class="p-4 border-pink-500 border-2 h-screen w-4/12 flex flex-col space-y-2">
+    <div id="currentMonsterImage"></div>
+    <div id="currentMonster"></div>
+    <progress id="health" value="100" max="100"></progress>
+  </div>
+</div>
+<style>
+  .slot {
+      width: 80px;
+      height: 80px;
+  }
+
+    .background-image {
+      opacity: 0.5;
+    }
+
+
+</style>
+</body>
+</html>
