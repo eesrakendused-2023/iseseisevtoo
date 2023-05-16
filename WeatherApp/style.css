@@ -104,7 +104,7 @@ h2 {
   margin-right: 10px;
 }
 
-.search-button {
+.search-button, .dropdown-button {
   font-size: 1.2rem;
   padding: 10px;
   background-color: #4caf50;
@@ -113,9 +113,10 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  margin-right: 10px;
 }
 
-.search-button:hover {
+.search-button:hover, .dropdown-button:hover {
   background-color: #3e8e41;
 }
 
@@ -208,11 +209,11 @@ h2 {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #4caf50;;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #4caf50;;
 }
 
 input:checked + .slider:before {
@@ -225,4 +226,48 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.dropdown-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.save-button {
+  font-size: 1.2rem;
+  padding: 10px;
+  padding-left: 10px;
+  background-color: #006eff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.save-button:hover {
+  background-color: #074ba4;
 }

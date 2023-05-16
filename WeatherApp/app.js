@@ -8,9 +8,16 @@ const windElement = document.querySelector('.wind');
 
 const apiKey = 'ea365d5b2565fbeaec5687d147e67ac7';
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New%20York&appid=${apiKey}&units=metric`;
-
+const searchForm = document.querySelector('.search-form');
+searchForm.addEventListener('submit', handleSearch);
 const unitToggle = document.getElementById('unit-toggle');
 let unit = 'metric'; // default unit is Celsius
+
+
+const saveButton = document.querySelector('.save-button');
+const favoriteLocationsElement = document.querySelector('.favorite-locations');
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownMenu = document.querySelector('.dropdown-menu');
 
 unitToggle.addEventListener('change', function() {
   if (unitToggle.checked) {
@@ -24,6 +31,46 @@ unitToggle.addEventListener('change', function() {
   displayWeather();
   
 });
+
+saveButton.addEventListener('click', () => {
+  const locationName = locationElement.textContent;
+
+  // Check if the location is already saved
+  const savedLocations = dropdownMenu.querySelectorAll('li');
+  const isLocationSaved = Array.from(savedLocations).some((savedLocation) => {
+    return savedLocation.textContent === locationName;
+  });
+
+  if (!isLocationSaved) {
+    const listItem = document.createElement('li');
+    listItem.textContent = locationName;
+    dropdownMenu.appendChild(listItem);
+
+    listItem.addEventListener('click', () => {
+      searchTerm = locationName;
+      apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
+      displayWeather();
+      displayForecast();
+      dropdownMenu.style.display = 'none';
+    });
+  }
+});
+
+favoriteLocationsElement.addEventListener('click', (event) => {
+  const clickedLocation = event.target.textContent;
+  searchTerm = clickedLocation;
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
+  displayWeather();
+  displayForecast();
+  dropdownMenu.style.display = 'none';
+});
+
+
+dropdownButton.addEventListener('click', () => {
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+
 
 function displayWeather() {
   fetch(apiUrl)
@@ -72,8 +119,6 @@ displayWeather(); // call displayWeather to show default weather and forecast
 
 
 
-const searchForm = document.querySelector('.search-form');
-searchForm.addEventListener('submit', handleSearch);
 
 function getBackgroundImage(weatherCode) {
   if (weatherCode >= 200 && weatherCode < 300) {
