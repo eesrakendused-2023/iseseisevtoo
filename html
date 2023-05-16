@@ -1,0 +1,33 @@
+!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>City Scramble Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="game.css">
+</head>
+<body>
+  <div class="container">
+    <h1>City Scramble Game</h1>
+    <div id="game">
+      <div id="timer">Time left: <span id="timer-value">30</span> seconds</div>
+      <div id="word-box"></div>
+      <div id="message-box">Guess the city!</div>
+     <input type="text" id="word-input" placeholder="Enter your answer">
+      <div id="button-container">
+        <button id="start-button">Start</button>
+        <button id="hint-button" disabled>Hint</button>
+        <button id="check-button" disabled>Check</button>
+        <button id="play-again-button" style="display: none;">Play Again</button>
+      </div>
+      <div id="score">Score: <span id="score-value">0</span></div>
+    </div>
+    <div id="share-buttons">
+      <a id="facebook-share" class="share-button facebook" href="#">Share on Facebook</a>
+      <a id="twitter-share" class="share-button twitter" href="#">Share on Twitter</a>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
+ 
