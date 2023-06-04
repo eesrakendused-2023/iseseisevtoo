@@ -1,5 +1,5 @@
 .container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
   padding-top: 100px;
@@ -20,9 +20,6 @@ h2 {
   
   
 }
-
-
-
 
 .weather-data {
   display: flex;
@@ -102,11 +99,27 @@ h2 {
   width: 300px;
   max-width: 100%;
   margin-right: 10px;
+  margin-left: 50px;
 }
 
-.search-button, .dropdown-button {
-  font-size: 1.2rem;
+.save-button {
+  font-size: 1rem;
   padding: 10px;
+  padding-left: 10px;
+  background-color: #006eff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-right: 10px;
+  height: 40px;
+}
+
+.search-button{
+  font-size: 1rem;
+  padding: 10px;
+  padding-left: 10px;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -114,37 +127,84 @@ h2 {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   margin-right: 10px;
+  height: 40px;
 }
 
-.search-button:hover, .dropdown-button:hover {
+.dropdown-button {
+
+  font-size: 1rem;
+  padding: 10px;
+  padding-left: 10px;
+  background-color: #ffae00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-right: 10px;
+  height: 40px;
+}
+
+.save-button:hover {
+  background-color: #074ba4;
+}
+
+.button-group {
+  display: flex;
+}
+
+.dropdown-button:hover {
+  background-color: #c1740f;
+}
+
+.search-button:hover{
   background-color: #3e8e41;
 }
 
 @media screen and (max-width: 480px) {
   .search-input {
     width: 200px;
+    
   }
 }
+.forecast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
 
 .forecast {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   margin-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .forecast-item {
-  width: calc(15% - 1rem);
-  margin-bottom: 1rem;
+  flex-basis: calc(20% - 1rem);
+  margin: 0.5rem;
   background-color: rgba(255, 255, 255, 0.532);
   padding: 3rem;
-  
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.5rem rgb(0, 0, 0);
   text-align: center;
 }
+
+#temperature-chart {
+  width: 100%;
+  max-width: 1200px; /* Adjust this value as needed */
+  margin: 1rem auto;
+}
+
 
 .forecast-day {
   font-weight: bold;
@@ -228,13 +288,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.dropdown-container {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -256,18 +309,24 @@ input:checked + .slider:before {
   background-color: #f0f0f0;
 }
 
-.save-button {
-  font-size: 1.2rem;
-  padding: 10px;
-  padding-left: 10px;
-  background-color: #006eff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+.search-container {
+  display: flex;
+  align-items: center;
 }
 
-.save-button:hover {
-  background-color: #074ba4;
+.favorite-locations-container {
+  margin-left: 1rem;
 }
+
+.fivedayforecast{
+  display: flex;
+  background-color: rgba(5, 5, 5, 0.575);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3em;
+  margin: 100px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+

@@ -12,8 +12,6 @@ const searchForm = document.querySelector('.search-form');
 searchForm.addEventListener('submit', handleSearch);
 const unitToggle = document.getElementById('unit-toggle');
 let unit = 'metric'; // default unit is Celsius
-
-
 const saveButton = document.querySelector('.save-button');
 const favoriteLocationsElement = document.querySelector('.favorite-locations');
 const dropdownButton = document.querySelector('.dropdown-button');
@@ -145,9 +143,77 @@ function displayForecast() {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${apiKey}&units=${unit}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-
       const forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
+      const labels = forecastData.map(item => {
+        const date = new Date(item.dt_txt);
+        return date.toLocaleString('default', { weekday: 'short' });
+      });
+      const temperatures = forecastData.map(item => Math.round(item.main.temp));
+      const rainfalls = forecastData.map(item => {
+        if (item.rain && item.rain['3h']) {
+          return item.rain['3h'];
+        } else {
+          return 0;
+        }
+      });
+
+      // Create line chart canvas
+      const chartCanvas = document.createElement('canvas');
+      chartCanvas.id = 'temperature-chart';
+      forecastElement.appendChild(chartCanvas);
+
+      // Create line chart
+      const ctx = document.getElementById('temperature-chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Temperature',
+              data: temperatures,
+              fill: false,
+              borderColor: 'rgba(75, 192, 192, 1)',
+              tension: 0.1
+            },
+            {
+              label: 'Rainfall',
+              data: rainfalls,
+              fill: false,
+              borderColor: 'rgba(192, 75, 75, 1)',
+              tension: 0.1
+            }
+          ]
+        },
+        options: {
+          scales: {
+            y: [
+              {
+                id: 'temperature',
+                type: 'linear',
+                position: 'left',
+                beginAtZero: false,
+                title: {
+                  display: true,
+                  text: 'Temperature (°C)'
+                }
+              },
+              {
+                id: 'rainfall',
+                type: 'linear',
+                position: 'right',
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Rainfall (mm)'
+                }
+              }
+            ]
+          }
+        }
+      });
+
+      // Create forecast items
       forecastData.forEach(item => {
         const date = new Date(item.dt_txt);
         const day = date.toLocaleString('default', { weekday: 'short' });
@@ -155,6 +221,7 @@ function displayForecast() {
         if (unit === 'imperial') {
           temperature = `${Math.round(item.main.temp)}°F`;
         }
+        const rainfall = item.rain && item.rain['3h'] ? `${item.rain['3h']} mm` : '0 mm';
         const iconUrl = `http://openweathermap.org/img/w/${item.weather[0].icon}.png`;
 
         const forecastItem = document.createElement('div');
@@ -163,6 +230,7 @@ function displayForecast() {
           <div class="forecast-day">${day}</div>
           <div class="forecast-icon"><img src="${iconUrl}" alt="${item.weather[0].description}"></div>
           <div class="forecast-temperature">${temperature}</div>
+          <div class="forecast-rainfall">Rainfall: ${rainfall}</div>
         `;
         forecastElement.appendChild(forecastItem);
       });

@@ -4,20 +4,23 @@
   <meta charset="UTF-8">
   <title>Weather App</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+<div class="fivedayforecast">
   <div class="container">
     <div class="background"></div>
     <h1 class="title">Weather App</h1>
     
-  <div class="toggle">
-        <span>Celsius</span>
-        <label class="switch">
-          <input type="checkbox" id="unit-toggle" />
-          <span class="slider round"></span>
-        </label>
-        <span>Fahrenheit</span>
-      </div>
+    <div class="toggle">
+      <span>Celsius</span>
+      <label class="switch">
+        <input type="checkbox" id="unit-toggle" />
+        <span class="slider round"></span>
+      </label>
+      <span>Fahrenheit</span>
+    </div>
 
     <div class="weather-data">
       <div class="location"></div>
@@ -27,32 +30,26 @@
       <div class="humidity"></div>
       <div class="wind"></div>
     </div>
+
     <form class="search-form">
-      <input type="text" class="search-input" placeholder="Search for a city">
+    <input type="text" class="search-input" placeholder="Search for a city">
+    <div class="button-group">
       <button type="submit" class="search-button">Search</button>
       <button class="save-button">Save</button>
-      <ul class="favorite-locations"></ul>
+      <button class="dropdown-button">Favorites</button>
+    </div>
+    <ul class="dropdown-menu">
+      <!-- List items will be dynamically added here -->
+    </ul>
+    <ul class="favorite-locations"></ul>
+  </form>
 
-    </form>
-
-    <div class="dropdown-container">
-      <button class="dropdown-button">Favorite Locations</button>
-      <ul class="dropdown-menu">
-        <!-- List items will be dynamically added here -->
-      </ul>
-   </div>
-
-    
-
-</div>
-
+   <div class="forecast">
+    <canvas id="temperature-chart"></canvas>
+    <section class="forecast-data"></section>
   </div>
 
-  
-    <h2 class="forecast-title">5-Day Forecast</h2>
-    <section class="forecast"></section>
-  
-
+ 
   <script src="app.js"></script>
 </body>
 </html>
