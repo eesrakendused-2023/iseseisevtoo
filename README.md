@@ -1,40 +1,42 @@
-# iseseisev-projekt
+# Weather App
+[screencapture-127-0-0-1-5500-2023-06-04-17_47_18.pdf](https://github.com/pilleae/WeatherApp/files/11645990/screencapture-127-0-0-1-5500-2023-06-04-17_47_18.pdf)
 
-Tähtaeg - 1 päev enne esitlust.
-1. 16.05.2023 kell 16:15-17:45 zoomis
+This is a simple weather application that allows users to search for weather information for a specific location and view the current weather as well as a 5-day forecast.
 
+**Author: Pille Allvee**
 
+**Features**
+- Display current weather information, including location, temperature, description, humidity, and wind speed.
+- Toggle between Celsius and Fahrenheit units.
+- Search for weather information for any location.
+- Save favorite locations for quick access.
+- View a 5-day forecast with temperature and rainfall data.
+- Dynamic background images based on the weather conditions.
 
-Eesrakenduste arendamise iseseisva projekti lähteülesanne. 
+**Technologies Used**
+- HTML
+- CSS
+- JavaScript
+- OpenWeatherMap API
+- Chart.js library
+- Getting Started
+- To run the weather app locally, follow these steps:
 
-Töö võib teha teha 1-4 liikmelise meeskonnana. Punkte jaotatakse vastavalt sellele, mitu liiget on meeskonnas:
-* 1 liige - max 70 punkti/inimene.
-* 2 liiget - max 40 punkti/inimene.
-* 3 liiget - max 30 punkti/inimene.
-* 4 liiget - max 20 punkti/inimene.
+**Clone the repository:**
+- bash
+- Copy code
+- git clone <repository-url>
+- Open the project folder in a code editor of your choice.
 
-**NB! Kui meeskonnas on rohkem kui üks liige, siis peab githubis selgelt välja tulema, kes millist osa tegi, et oleks võimalik hinnata iga meeskonnaliikme individuaalset panust.**
+- In the app.js file, replace the value of the apiKey variable with your own OpenWeatherMap API key. You can sign up for an API key on the OpenWeatherMap website.
+- Open the index.html file in a web browser.
+- Use the search bar to enter a location and press Enter or click the Search button to display the weather information for that location.
+- Toggle the unit switch to change between Celsius and Fahrenheit units.
+- Click on the Save button to save the current location as a favorite. The saved locations can be accessed by clicking on the Favorite Locations dropdown.
 
-README.md fail sisaldab:
-1. suurelt rakenduse nime;
-1. autorite nimesid;
-1. rakenduse funktsionaalsuse kirjeldust;
-1. ekraanitõmmist rakendusest.
+**API Usage**
+- This app uses the OpenWeatherMap API to retrieve weather data. You will need to sign up for an API key and replace the apiKey variable in the app.js file with your own API key.
 
-Rakenduse puhul peavad olema täidetud vähemalt järgmised nõuded:
-  * rakendus lahendab tõsist probleemi või on meelelahutusliku eesmärgiga; 
-  * rakenduse idee peab olema kooskõlastatud õppejõuga;
-  * responsive disain (kui tegemist pole ainult desktopile mõeldud mänguga);
-  * rakenduse javascripti osa on vähemalt 200 rida koodi ja koodi kordused peavad olema minimeeritud;
-  
-Teema ettepanekud:
- * Kuldvillak
- * Filmiinfo rakendus kasutades moviedatabase api-t - saab otsida filme, seriaale ja teha list enda vaadatud filmidest jne. 
- * Raamaturiiuli rakendus - Saab sisestada kodus olevad raamatud, märkida millised on loetud ja millised on pooleli. Moodustada lugemiseks eraldi liste ning märkida, mis leheküljel on raamat hetkel pooleli.
- * 
-
-Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Üle 50% koodist (javascript ja CSS) peab olema enda kirjutatud. Kasutada võib erinevaid API-sid ja võib kasutada erinevaid javascripti teeke (library).
-
-# Esitlus
-* Igale grupile on aega 12 minutit (5 minutit rakenduse esitlus, 5 minutit koodi esitlus, 2 minutit küsimused)
-* Esitama peavad grupiliikmed ühisel ajal.
+**Credits**
+- The weather icons used in this app are provided by **OpenWeatherMap**.
+- The background images are sourced from **Unsplash** and are selected based on the current weather conditions.
