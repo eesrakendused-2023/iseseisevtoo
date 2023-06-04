@@ -1,9 +1,12 @@
 # Weather App
-[screencapture-127-0-0-1-5500-2023-06-04-17_47_18.pdf](https://github.com/pilleae/WeatherApp/files/11645990/screencapture-127-0-0-1-5500-2023-06-04-17_47_18.pdf)
 
 This is a simple weather application that allows users to search for weather information for a specific location and view the current weather as well as a 5-day forecast.
 
 **Author: Pille Allvee**
+<img width="1763" alt="Screenshot 2023-06-04 at 18 32 49" src="https://github.com/pilleae/WeatherApp/assets/70939481/cf9b2b53-576d-4c0d-8b0d-9fc5e9e523b8">
+<img width="1572" alt="Screenshot 2023-06-04 at 18 33 22" src="https://github.com/pilleae/WeatherApp/assets/70939481/e89c580b-f513-479a-8f0b-151870fb80af">
+
+
 
 **Features**
 - Display current weather information, including location, temperature, description, humidity, and wind speed.
