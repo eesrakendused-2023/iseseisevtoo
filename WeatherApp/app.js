@@ -27,8 +27,8 @@ unitToggle.addEventListener('change', function() {
   }
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
   displayWeather();
-  
 });
+
 
 let searchTerm = '';
 
@@ -87,6 +87,7 @@ document.addEventListener('click', (event) => {
     dropdownMenu.style.display = 'none';
   }
 });
+
 
 function handleSearch(event) {
   event.preventDefault();
