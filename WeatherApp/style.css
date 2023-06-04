@@ -17,8 +17,13 @@ h2 {
   text-align: center;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   font-size: 50px;
-  
-  
+}
+
+h3 {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  font-size: 15px;
 }
 
 .weather-data {
@@ -30,12 +35,14 @@ h2 {
   padding: 3em;
   border-radius: 50px;
   box-shadow: 0 0 10px rgb(0, 0, 0);
+  color: white;
 }
 
 .location {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
   margin-bottom: 0.5em;
+  color: white;
 }
 
 .temperature {
@@ -55,7 +62,7 @@ h2 {
 }
 
 .humidity, .wind {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 @media (max-width: 600px) {
@@ -131,7 +138,6 @@ h2 {
 }
 
 .dropdown-button {
-
   font-size: 1rem;
   padding: 10px;
   padding-left: 10px;
@@ -167,16 +173,6 @@ h2 {
     
   }
 }
-.forecast {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  padding: 1rem;
-  margin: 0 auto;
-}
-
 
 .forecast {
   display: flex;
@@ -197,6 +193,7 @@ h2 {
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.5rem rgb(0, 0, 0);
   text-align: center;
+  color: white;
 }
 
 #temperature-chart {
@@ -205,7 +202,6 @@ h2 {
   margin: 1rem auto;
 }
 
-
 .forecast-day {
   font-weight: bold;
   text-transform: uppercase;
@@ -213,13 +209,12 @@ h2 {
 }
 
 .forecast-icon {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .forecast-temperature {
   font-size: 1.2rem;
 }
-
 
 .toggle {
   display: flex;
@@ -253,7 +248,7 @@ h2 {
   bottom: 0;
   background-color: #ccc;
   transition: .4s;
-  border-radius: 34px;
+  border-radius: 0.5rem;
 }
 
 .slider:before {
@@ -265,7 +260,7 @@ h2 {
   bottom: 4px;
   background-color: white;
   transition: .4s;
-  border-radius: 50%;
+  border-radius: 0.5rem;
 }
 
 input:checked + .slider {
@@ -291,7 +286,7 @@ input:checked + .slider:before {
 .dropdown-menu {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: rgba(178, 176, 176, 0.626);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -306,7 +301,9 @@ input:checked + .slider:before {
 }
 
 .dropdown-menu li:hover {
-  background-color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.579);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-container {

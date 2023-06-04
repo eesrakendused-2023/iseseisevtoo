@@ -30,7 +30,10 @@ unitToggle.addEventListener('change', function() {
   
 });
 
-saveButton.addEventListener('click', () => {
+let searchTerm = '';
+
+saveButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent form submission
   const locationName = locationElement.textContent;
 
   // Check if the location is already saved
@@ -54,21 +57,54 @@ saveButton.addEventListener('click', () => {
   }
 });
 
-favoriteLocationsElement.addEventListener('click', (event) => {
-  const clickedLocation = event.target.textContent;
-  searchTerm = clickedLocation;
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
-  displayWeather();
-  displayForecast();
-  dropdownMenu.style.display = 'none';
-});
 
+favoriteLocationsElement.addEventListener('click', (event) => {
+  event.preventDefault();
+  const clickedElement = event.target.closest('li');
+
+  if (clickedElement) {
+    const clickedLocation = clickedElement.textContent;
+    searchTerm = clickedLocation;
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
+    displayWeather();
+    displayForecast();
+    dropdownMenu.style.display = 'none';
+  }
+});
 
 dropdownButton.addEventListener('click', () => {
-  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+  if (dropdownMenu.style.display === 'block') {
+    dropdownMenu.style.display = 'none';
+  } else {
+    dropdownMenu.style.display = 'block';
+    dropdownMenu.style.top = `${dropdownButton.offsetTop + dropdownButton.offsetHeight}px`;
+    dropdownMenu.style.left = `${dropdownButton.offsetLeft}px`;
+  }
 });
 
+document.addEventListener('click', (event) => {
+  if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+    dropdownMenu.style.display = 'none';
+  }
+});
 
+function handleSearch(event) {
+  event.preventDefault();
+  const searchInput = document.querySelector('.search-input');
+  searchTerm = searchInput.value.trim(); // Update the searchTerm
+  if (!searchTerm) {
+    return;
+  }
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
+  displayWeather();
+
+  displayForecast(); // call displayForecast to show 5-day forecast
+
+  searchInput.value = '';
+}
+
+displayWeather(); // call displayWeather to show default weather and forecast
 
 function displayWeather() {
   fetch(apiUrl)
@@ -96,27 +132,6 @@ function displayWeather() {
       console.error('Error:', error);
     });
 }
-
-function handleSearch(event) {
-  event.preventDefault();
-  const searchInput = document.querySelector('.search-input');
-  searchTerm = searchInput.value.trim(); // update searchTerm
-  if (!searchTerm) {
-    return alert('Please enter a city name');
-  }
-
-  displayForecast(); // call displayForecast to show 5-day forecast
-
-  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
-  displayWeather();
-
-  searchInput.value = '';
-}
-
-displayWeather(); // call displayWeather to show default weather and forecast
-
-
-
 
 function getBackgroundImage(weatherCode) {
   if (weatherCode >= 200 && weatherCode < 300) {
@@ -187,9 +202,8 @@ function displayForecast() {
         },
         options: {
           scales: {
-            y: [
-              {
-                id: 'temperature',
+            y: {
+              temperature: {
                 type: 'linear',
                 position: 'left',
                 beginAtZero: false,
@@ -198,8 +212,7 @@ function displayForecast() {
                   text: 'Temperature (°C)'
                 }
               },
-              {
-                id: 'rainfall',
+              rainfall: {
                 type: 'linear',
                 position: 'right',
                 beginAtZero: true,
@@ -208,12 +221,11 @@ function displayForecast() {
                   text: 'Rainfall (mm)'
                 }
               }
-            ]
+            }
           }
         }
       });
 
-      // Create forecast items
       forecastData.forEach(item => {
         const date = new Date(item.dt_txt);
         const day = date.toLocaleString('default', { weekday: 'short' });
