@@ -8,7 +8,7 @@ Autor: Käti Jalakas
 Rakendus on mõeldud meelelahutuslikuks eesmärgiks. Tegemist on lihtsa labürint mänguga, kus mängija peab Smiley juhatama labürindi väljapääsuni. Mäng mõõdab aega, mis mängijal kulub lõppu jõudmiseks.
 
 # Kasutatud allikad
-ChatGPT
-W3Schools
+* ChatGPT
+* W3Schools
 
 
