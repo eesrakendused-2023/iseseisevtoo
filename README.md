@@ -6,6 +6,8 @@ Autor: Käti Jalakas
 
 Rakendus on mõeldud meelelahutuslikuks eesmärgiks. Tegemist on lihtsa labürint mänguga, kus mängija peab Smiley juhatama labürindi väljapääsuni. Mäng mõõdab aega, mis mängijal kulub lõppu jõudmiseks.
 
+http://www.tlu.ee/~katij/iseseisev/Game/maze.html
+
 # Kasutatud allikad
 * ChatGPT
 * W3Schools
