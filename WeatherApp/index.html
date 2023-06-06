@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="fivedayforecast">
+  <div class="container">
+    <div class="background"></div>
+    <h1 class="title">Weather App</h1>
+    
+    <div class="toggle">
+      <span><h3>Celsius</h3></span>
+      <label class="switch">
+        <input type="checkbox" id="unit-toggle" />
+        <span class="slider round"></span>
+      </label>
+      <span><h3>Fahrenheit</h3></span>
+    </div>
+
+    <div class="weather-data">
+      <div class="location"></div>
+      <div class="temperature"></div>
+      <div class="description"></div>
+      <div class="icon"></div>
+      <div class="humidity"></div>
+      <div class="wind"></div>
+    </div>
+
+    <form class="search-form">
+    <input type="text" class="search-input" placeholder="Search for a city">
+    <div class="button-group">
+      <button type="submit" class="search-button">Search</button>
+      <button class="save-button">Save</button>
+      <button class="dropdown-button">Favorites</button>
+    </div>
+    <ul class="dropdown-menu">
+      <!-- List items will be dynamically added here -->
+    </ul>
+    <ul class="favorite-locations"></ul>
+  </form>
+
+   <div class="forecast">
+    <canvas id="temperature-chart"></canvas>
+    <section class="forecast-data"></section>
+  </div>
+
+ 
+  <script src="app.js"></script>
+</body>
+</html>
