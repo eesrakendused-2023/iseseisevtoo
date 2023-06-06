@@ -1,6 +1,7 @@
 # Labürint mäng
 <img width="1280" alt="Kuvatõmmis 2023-06-06 141658" src="https://github.com/jalakaskati/iseseisevtoo/assets/114982919/4ce23fc8-bc81-4c97-bc0b-bf451394d873">
-<img width="1281" alt="Kuvatõmmis 2023-06-06 140417" src="https://github.com/jalakaskati/iseseisevtoo/assets/114982919/b79c6e86-b101-4cdb-b28a-3db82c86eb36">
+<img width="1280" alt="image" src="https://github.com/jalakaskati/iseseisevtoo/assets/114982919/7bec541f-862e-4312-b94f-236aefc8341d">
+
 
 Autor: Käti Jalakas
 
