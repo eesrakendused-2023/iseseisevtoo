@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="maze.css">
+        <title>Maze game</title>
+    </head>
+    <body>
+        <div id="timer">00:00</div>
+        <div id="container">
+            <canvas id="gameCanvas" width="600" height="400"></canvas>
+        </div>
+        <h1>Help Smiley out of the maze</h1>
+        <div id="message-container" class="message-container">
+            <div id="victory-message" class="victory-message">
+                <h1>Congradulations!</h1>
+                <p>You finished the maze</p>
+                <p id="time"></p>
+                <input id="startOverBtn" type="button" onclick="startOver()" value="Start Over"/>
+            </div>
+        </div>
+        <script src="maze.js"></script>
+    </body>
+  </html>
