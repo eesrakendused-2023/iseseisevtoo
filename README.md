@@ -11,5 +11,6 @@ http://www.tlu.ee/~katij/iseseisev/Game/maze.html
 # Kasutatud allikad
 * ChatGPT
 * W3Schools
+* YouTube'i video https://www.youtube.com/watch?v=EN733Aq4ynM&t=583s
 
 
