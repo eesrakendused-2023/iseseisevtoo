@@ -1,3 +1,4 @@
+// Selecting elements from the HTML document
 const container = document.querySelector('.container');
 const locationElement = document.querySelector('.location');
 const temperatureElement = document.querySelector('.temperature');
@@ -6,17 +7,17 @@ const iconElement = document.querySelector('.icon');
 const humidityElement = document.querySelector('.humidity');
 const windElement = document.querySelector('.wind');
 
+// OpenWeatherMap API key and initial API URL
 const apiKey = 'ea365d5b2565fbeaec5687d147e67ac7';
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New%20York&appid=${apiKey}&units=metric`;
+
+// Handling the search form submission
 const searchForm = document.querySelector('.search-form');
 searchForm.addEventListener('submit', handleSearch);
+
+// Toggling between Celsius and Fahrenheit units
 const unitToggle = document.getElementById('unit-toggle');
 let unit = 'metric'; // default unit is Celsius
-const saveButton = document.querySelector('.save-button');
-const favoriteLocationsElement = document.querySelector('.favorite-locations');
-const dropdownButton = document.querySelector('.dropdown-button');
-const dropdownMenu = document.querySelector('.dropdown-menu');
-
 unitToggle.addEventListener('change', function() {
   if (unitToggle.checked) {
     unit = 'imperial';
@@ -29,24 +30,36 @@ unitToggle.addEventListener('change', function() {
   displayWeather();
 });
 
+const saveButton = document.querySelector('.save-button');
+const favoriteLocationsElement = document.querySelector('.favorite-locations');
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownMenu = document.querySelector('.dropdown-menu');
 
-let searchTerm = '';
+// Load saved favorites from local storage
+let savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 saveButton.addEventListener('click', (event) => {
   event.preventDefault(); // Prevent form submission
   const locationName = locationElement.textContent;
 
   // Check if the location is already saved
-  const savedLocations = dropdownMenu.querySelectorAll('li');
-  const isLocationSaved = Array.from(savedLocations).some((savedLocation) => {
-    return savedLocation.textContent === locationName;
+  const isLocationSaved = savedFavorites.some((savedLocation) => {
+    return savedLocation === locationName;
   });
 
   if (!isLocationSaved) {
+    // Add the location to saved favorites
+    savedFavorites.push(locationName);
+
+    // Save the updated favorites to local storage
+    localStorage.setItem('favorites', JSON.stringify(savedFavorites));
+
+    // Create a new list item for the saved location
     const listItem = document.createElement('li');
     listItem.textContent = locationName;
     dropdownMenu.appendChild(listItem);
 
+    // Add click event listener to the saved location
     listItem.addEventListener('click', () => {
       searchTerm = locationName;
       apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
@@ -57,7 +70,7 @@ saveButton.addEventListener('click', (event) => {
   }
 });
 
-
+// Handling click on a saved favorite location
 favoriteLocationsElement.addEventListener('click', (event) => {
   event.preventDefault();
   const clickedElement = event.target.closest('li');
@@ -72,6 +85,7 @@ favoriteLocationsElement.addEventListener('click', (event) => {
   }
 });
 
+// Displaying or hiding the dropdown menu for saved favorite locations
 dropdownButton.addEventListener('click', () => {
   if (dropdownMenu.style.display === 'block') {
     dropdownMenu.style.display = 'none';
@@ -82,6 +96,7 @@ dropdownButton.addEventListener('click', () => {
   }
 });
 
+// Hiding the dropdown menu when clicking outside the button or menu
 document.addEventListener('click', (event) => {
   if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
     dropdownMenu.style.display = 'none';
@@ -89,6 +104,7 @@ document.addEventListener('click', (event) => {
 });
 
 
+// Handling the search form submission
 function handleSearch(event) {
   event.preventDefault();
   const searchInput = document.querySelector('.search-input');
@@ -100,19 +116,22 @@ function handleSearch(event) {
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}&units=${unit}`;
   displayWeather();
 
-  displayForecast(); // call displayForecast to show 5-day forecast
+  displayForecast(); // Call displayForecast to show 5-day forecast
 
   searchInput.value = '';
 }
 
-displayWeather(); // call displayWeather to show default weather and forecast
+// Displaying the current weather and background image
+displayWeather(); // Call displayWeather to show default weather and forecast
 
+// Fetching and displaying the current weather
 function displayWeather() {
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
       console.log(data);
 
+      // Update the weather information elements
       locationElement.textContent = `${data.name}, ${data.sys.country}`;
       if (unit === 'metric') {
         temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
@@ -126,14 +145,13 @@ function displayWeather() {
 
       const backgroundElement = document.querySelector('.background');
       backgroundElement.style.backgroundImage = `url('images/${getBackgroundImage(data.weather[0].id)}')`;
-
-      //displayForecast(); // call displayForecast to show 5-day forecast
     })
     .catch(error => {
       console.error('Error:', error);
     });
 }
 
+// Get the appropriate background image based on weather conditions
 function getBackgroundImage(weatherCode) {
   if (weatherCode >= 200 && weatherCode < 300) {
     return 'thunderstorm.jpg';
@@ -152,6 +170,7 @@ function getBackgroundImage(weatherCode) {
   }
 }
 
+// Fetching and displaying the 5-day forecast
 function displayForecast() {
   const forecastElement = document.querySelector('.forecast');
   forecastElement.innerHTML = '';
@@ -159,6 +178,7 @@ function displayForecast() {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${apiKey}&units=${unit}`)
     .then(response => response.json())
     .then(data => {
+      // Extract relevant forecast data for each day at 12:00:00
       const forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
       const labels = forecastData.map(item => {
         const date = new Date(item.dt_txt);
@@ -178,7 +198,7 @@ function displayForecast() {
       chartCanvas.id = 'temperature-chart';
       forecastElement.appendChild(chartCanvas);
 
-      // Create line chart
+      // Create line chart using Chart.js
       const ctx = document.getElementById('temperature-chart').getContext('2d');
       new Chart(ctx, {
         type: 'line',
@@ -227,6 +247,7 @@ function displayForecast() {
         }
       });
 
+      // Create forecast items for each day
       forecastData.forEach(item => {
         const date = new Date(item.dt_txt);
         const day = date.toLocaleString('default', { weekday: 'short' });
